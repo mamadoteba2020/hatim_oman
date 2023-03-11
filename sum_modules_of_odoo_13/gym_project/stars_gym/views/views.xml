@@ -1,0 +1,237 @@
+<odoo>
+  <data>
+  <!-- subscriptions.subscriptions form view -->
+  <record id="model_subscriptions_subscriptions_view_form" model="ir.ui.view">
+    <field name="name">subscriptions.subscriptions.view.form</field>
+    <field name="model">subscriptions.subscriptions</field>
+    <field name="arch" type="xml">
+      <form string="Subscriptions">
+       <header>
+               <button name="create_invoice"  string="Create Invoice" class="oe_highlight"
+                 type="object"/>
+                  <button name="active_def" states="draft"  string="Activate The Subscription" class="oe_highlight"
+                 type="object"/>
+                  <button name="stop_sub" states="active"  string="تعليق الإشتراك" class="oe_highlight"
+                 type="object"/>
+                 <button name="cancel_def" states="active"  string="إلغاء الأشتراك قصريا" class="oe_highlight"
+                 type="object"/>
+                  <button name="non_subscription_cron"  string="Test Non Subscription" class="oe_highlight"
+                 type="object"/>
+                   <field name="state" widget="statusbar"/>
+        </header>
+        <sheet>
+          <div class="oe_button_box" name="button_box">
+                <button name="start_hold_sub" states="hold"  string="استكمال الإشتراك" class="oe_highlight"
+                 type="object"/>
+                <button class="oe_stat_button" name="invs_view" type="object" icon="fa-list-ol">
+                    <field string="Invoices" name="inv_count" widget="statinfo"/>
+                </button>  
+
+          </div>
+         
+              
+          
+            <field name="image" widget='image' class="oe_myimage"/>
+          
+          <group>
+            
+            
+            <field name="sub_seq"/>
+            <field name="res_subscription" attrs="{'readonly':['|','|','|',('state', '=', 'active'),('state', '=', 'hold'),('state', '=', 'not_subscribed'),('state', '=', 'cancel')]}"/>
+            <field name="mobile_star"/>
+
+          </group>
+          <group>
+   
+            <field name="start_date" attrs="{'readonly':['|','|','|',('state', '=', 'active'),('state', '=', 'hold'),('state', '=', 'not_subscribed'),('state', '=', 'cancel')]}"/>
+            <field name="end_date" attrs="{'readonly':['|','|','|',('state', '=', 'active'),('state', '=', 'hold'),('state', '=', 'not_subscribed'),('state', '=', 'cancel')]}"/>
+            <field name="add_field" attrs="{'readonly':['|','|','|',('state', '=', 'active'),('state', '=', 'hold'),('state', '=', 'not_subscribed'),('state', '=', 'cancel')]}"/>
+            <field name="line_sub_id" attrs="{'readonly':['|','|','|',('state', '=', 'active'),('state', '=', 'hold'),('state', '=', 'not_subscribed'),('state', '=', 'cancel')]}"/>
+             <field name="difrinet" attrs="{'invisible':['|','|','|',('state', '=', 'draft'),('state', '=', 'active'),('state', '=', 'not_subscribed'),('state', '=', 'cancel')],'readonly':[('state','=','hold')]}"/>
+          </group>
+        </sheet>
+      </form>
+    </field>
+  </record>
+
+   
+  <record id="star_gym_search" model="ir.ui.view">
+    <field name="name">subscriptions.subscriptions.search</field>
+    <field name="model">subscriptions.subscriptions</field>
+    <field name="arch" type="xml">
+      <search string="Search Patients">
+     
+        <field name="sub_seq" filter_domain="['|','|', ('sub_seq', 'ilike', self), ('res_subscription', 'ilike', self),('mobile_star','ilike',self)]"/>
+        
+      </search>
+    </field>
+  </record>
+
+  
+
+
+
+  <!-- subscriptions.subscriptions tree view -->
+  <record id="model_subscriptions_subscriptions_view_tree" model="ir.ui.view">
+    <field name="name">subscriptions.subscriptions.view.tree</field>
+    <field name="model">subscriptions.subscriptions</field>
+    <field name="arch" type="xml">
+      <!-- colors="blue:state=='draft';green:state=='approve';red:state =='refuse';" -->
+      <tree decoration-info="state == 'draft'" decoration-muted="state == 'not_subscribed'"
+                  decoration-success="state == 'active'" >
+        <!-- Add your fields here -->
+        <field name="res_subscription"/>
+        <field name="end_date"/>
+        <field name="sub_seq"/>
+        <field name="state"/>
+      </tree>
+    </field>
+  </record>
+
+  <!-- subscriptions.subscriptions kanban view -->
+  
+ <record id="subscriptions_subscriptions_kanban" model="ir.ui.view">
+        <field name="name">subscriptions.subscriptions.kanban</field>
+        <field name="model">subscriptions.subscriptions</field>
+        <field name="arch" type="xml">
+                <!-- red:state in ('to_start','started'); -->
+                <!-- colors="blue:kanban_state=='Green';black:kanban_state=='Red';green:kanban_state=='Gray" -->
+              <!--  decoration-info="state == 'draft'" decoration-danger="state == 'not_subscribed'" decoration-success="state =='active'" decoration-muted="state='cancel'"-->
+            <kanban> 
+                <field name="id"/>
+                <field name="image"/>
+                <field name="res_subscription"/>
+                <field name="end_date"/>
+                <field name="mobile_star"/>
+                <field name="state"/>
+                <!-- <field name="kanban_state"/> -->
+                <!-- <field name="state"/>  -->
+                <field name="color"/>
+                <!-- "success"  "danger" "muted"   colors='{"active": "success", "not_subscribed": "danger", "cancel": "danger","draft": "muted"}'-->
+                <progressbar field="state" colors='{"active": "success", "not_subscribed": "danger", "cancel": "muted"}'/> 
+                <templates>
+                            <!-- <div t-attf-class="{{!selection_mode ? 'oe_kanban_color_' + kanban_getcolor(record.color.raw_value) : ''}} oe_kanban_card oe_kanban_global_click"> -->
+              
+                    <t t-name="kanban-box">
+                        <!-- style="width: 500px; height:220px;" -->
+                        <!-- class="o_kanban_view oe_kanban_global_click o_kanban_record_has_image_fill o_star_gym_customer_kanban" -->
+                        <div t-attf-class="{{!selection_mode ? 'oe_kanban_color_' + kanban_getcolor(record.color.raw_value) : ''}} oe_kanban_card oe_kanban_global_click o_kanban_record_has_image_fill o_star_gym_customer_kanban"  style="width:330px ; height: 300px;">
+                            <!--o_kanban_image_fill_left d-none d-md-block-->
+                            <!-- <div style="width: 50%; height: 100%;">  -->
+                             <t t-if="record.image.raw_value">
+                                 <!-- style="width:250px ; height: 220px;" -->
+                              
+                                  <div class="o_kanban_image_fill_left d-none d-md-block " 
+                                     t-attf-style=" background-image:url('#{kanban_image('subscriptions.subscriptions', 'image', record.id.raw_value)}');width:150px;height: 300px;" />
+                                
+                            </t>
+                            
+                            <t t-else="">
+                                  <!-- style="width:250px ; height: 220px;" -->
+                              
+                                <img class="o_kanban_image" alt="Avatar" t-att-src='_s + "/base/static/img/avatar.png"' style="width:150px ; height: 300px;"/>
+                            
+                            </t>
+                            <!-- </div> -->
+                            <!-- <div style="width: 250px; height: 220px" > -->
+                               <!-- style="width: 200px; height:220px;" -->
+                              <div class="oe_kanban_details" style="width:75px ; height: 300px;">
+                                  <strong class="o_kanban_record_title" style="font-size: 10px; font-weight: bold;"><field name="res_subscription"/></strong>
+                                  <br/>
+                                   <br/>
+                                    <br/>
+                                  <!-- <br/>
+                                  <br/> -->
+                                  <div class="o_kanban_tags_section"/>
+                                  <ul >
+                                      <!-- اسم المشترك : -->
+                                    <li dir="rtl"> <span style="font-size: 13px; font-weight: bold;" ><field name="res_subscription" /></span></li>
+                                    <!-- <br/> -->
+                                     <br/>
+                                      <!-- >نهاية الإشتراك : -->
+                                    <li dir="rtl"><span style="font-size: 13px; font-weight: bold;" ><field name="end_date"/></span></li>
+                                    <!-- <br/>  >رقم الهاتف :-->
+                                     <br/>
+                                    <li dir="rtl"><span style="font-size: 13px; font-weight: bold;" ><field name="mobile_star"/></span></li>
+                                    <!-- <br/> حالة المشترك : -->
+                                     <br/>
+                                    <!-- <li dir="rtl"><span style="font-size: 13px; font-weight: bold;" ><field name="state"/></span></li> -->
+                                   
+                                  </ul>
+                                
+                              </div>
+                                <!-- style="width: 50px; height:220px;" -->
+                                <!-- widget="state_selection" -->
+                             <div class="oe_kanban_bottom_right" style="width:55px ; height: 300px;" t-if="!selection_mode">
+                                        <!-- <field name="state" widget="state_selection"/> -->
+                                        <field name="state" widget="label_selection" options="{'classes': {'draft': 'info', 'cancel': 'danger', 'active': 'success', 'not_subscribed': 'warning'}}"/>
+                                         <!-- <field name="state" widget="state_selection"/> -->
+                                        
+                                        <!-- state_selection-->
+                                       
+                             </div>
+                             
+                        </div>
+                        
+                    </t>
+                    <!-- <searchpanel>
+                        <field name="doctor_id" icon="fa-building"/>
+                        <field name="doctor_id" select="multi" icon="fa-tags"/>
+                    </searchpanel> -->
+                </templates>
+            </kanban>
+        </field>
+    </record>
+
+   
+ 
+  <!-- subscriptions.line form view -->
+  <record id="subscriptions_line_view_form" model="ir.ui.view">
+    <field name="name">subscriptions.line.view.form</field>
+    <field name="model">subscriptions.line</field>
+    <field name="arch" type="xml">
+      <form string="">
+        <sheet>
+          <group>
+            <!-- Add your fields here -->
+            <field name="prod_sub"/>
+            <!-- <field name="quin_sub"/> -->
+            <field name="price_sub"/>
+          </group>
+        </sheet>
+      </form>
+    </field>
+  </record>
+
+ <!-- subscriptions.line tree view -->
+ <record id="subscriptions_line_view_tree" model="ir.ui.view">
+   <field name="name">subscriptions.line.view.tree</field>
+   <field name="model">subscriptions.line</field>
+   <field name="arch" type="xml">
+     <tree editable="bottom">
+       <!-- Add your fields here -->
+      
+            <field name="prod_sub"/>
+            <!-- <field name="quin_sub"/> -->
+            <field name="price_sub"/>
+     </tree>
+   </field>
+ </record>
+
+  <!-- subscriptions.subscriptions action window -->
+  <record id="model_name_subscriptions_subscriptions_action" model="ir.actions.act_window">
+    <field name="name">subscriptions.subscriptions.action</field>
+    <field name="res_model">subscriptions.subscriptions</field>
+    <field name="view_mode">kanban,tree,form</field>
+  </record>
+
+  <!-- This Menu Item Must have a parent -->
+  <menuitem id="subscriptions_subscriptions_menu_categ" name="Star Gym"/>
+  <!-- This Menu Item must have a parent and an action -->
+  <menuitem id="subscriptions_subscriptions_menu_act" name="Subscriptions" parent="subscriptions_subscriptions_menu_categ" action="model_name_subscriptions_subscriptions_action"/>
+
+  <!-- This Menu Item must have a parent and an action -->
+  <menuitem id="Subscribers_menu_act" name="Subscribers" parent="subscriptions_subscriptions_menu_categ" action="contacts.action_contacts"/> 
+  </data>
+</odoo>
+

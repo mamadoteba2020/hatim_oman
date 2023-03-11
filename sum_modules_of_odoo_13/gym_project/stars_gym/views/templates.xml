@@ -1,0 +1,18 @@
+<odoo>
+    <data>
+     <!-- <template id="star_gum" name="Webcam By afag">
+        <t t-call="web.layout">
+           
+            <link type="text/css" rel="stylesheet" href="/stars_gym/static/src/css/custom.css"/>
+            <link rel="stylesheet" href='/stars_gym/static/src/css/bootstrap.min.css' />
+           
+        </t>
+    </template> -->
+    <template id="assets_backend_star_gum" name="star_gum assets" inherit_id="web.assets_backend">
+        <xpath expr="." position="inside">
+            <link rel="stylesheet" type="text/css" href="/stars_gym/static/src/css/custom.css"/>
+        </xpath>
+    </template>
+
+    </data>
+</odoo>

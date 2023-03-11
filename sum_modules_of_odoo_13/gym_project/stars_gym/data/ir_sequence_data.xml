@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+        <!-- Sequences for petty cash -->
+        <record id="seq_module_subscriptions" model="ir.sequence">
+            <field name="name">REG</field>
+            <field name="code">subscriptions.subscriptions</field>
+            <field name="prefix">REG</field>
+            <field name="padding">2</field>
+            <field name="company_id" eval="False"/>
+        </record>
+
+
+
+         <record id="seqconv_module_subscriptions" model="ir.sequence">
+            <field name="name">CONV</field>
+            <field name="code">subscription.conversion</field>
+            <field name="prefix">CONV</field>
+            <field name="padding">2</field>
+            <field name="company_id" eval="False"/>
+        </record>
+
+    </data>
+</odoo>

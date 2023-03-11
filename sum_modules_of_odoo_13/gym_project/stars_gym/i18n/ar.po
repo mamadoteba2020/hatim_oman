@@ -1,0 +1,328 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* stars_gym
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 13.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-12-28 11:50+0000\n"
+"PO-Revision-Date: 2021-12-28 11:50+0000\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: stars_gym
+#: code:addons/stars_gym/models/models.py:0
+#, python-format
+msgid ""
+"<p class=\"oe_view_nocontent_create\">\n"
+"                           Click to Create for New Invoce\n"
+"                        </p>"
+msgstr ""
+
+#. module: stars_gym
+#: model_terms:ir.ui.view,arch_db:stars_gym.model_subscriptions_subscriptions_view_form
+msgid "Activate The Subscription"
+msgstr "تفعيل الاشتراك"
+
+#. module: stars_gym
+#: model_terms:ir.ui.view,arch_db:stars_gym.subscriptions_subscriptions_kanban
+msgid "Avatar"
+msgstr ""
+
+#. module: stars_gym
+#: code:addons/stars_gym/models/models.py:0
+#, python-format
+msgid "Blocked"
+msgstr "محجوب"
+
+#. module: stars_gym
+#: model:ir.model.fields.selection,name:stars_gym.selection__subscriptions_subscriptions__state__cancel
+msgid "Cancelled"
+msgstr "إلغاء"
+
+#. module: stars_gym
+#: model:ir.actions.server,name:stars_gym.subscriptions_subscriptions_cron_ir_actions_server
+#: model:ir.cron,cron_name:stars_gym.subscriptions_subscriptions_cron
+#: model:ir.cron,name:stars_gym.subscriptions_subscriptions_cron
+msgid "Check Subscriptions Status"
+msgstr "تحقق من حالة الاشتراكات"
+
+#. module: stars_gym
+#: model:ir.model.fields,field_description:stars_gym.field_subscriptions_subscriptions__color
+msgid "Color Index"
+msgstr ""
+
+#. module: stars_gym
+#: model_terms:ir.ui.view,arch_db:stars_gym.model_subscriptions_subscriptions_view_form
+msgid "Create Invoice"
+msgstr "إنشاء الفاتورة"
+
+#. module: stars_gym
+#: model:ir.model.fields,field_description:stars_gym.field_subscriptions_line__create_uid
+#: model:ir.model.fields,field_description:stars_gym.field_subscriptions_subscriptions__create_uid
+msgid "Created by"
+msgstr "إنشاء بواسطة"
+
+#. module: stars_gym
+#: model:ir.model.fields,field_description:stars_gym.field_subscriptions_line__create_date
+#: model:ir.model.fields,field_description:stars_gym.field_subscriptions_subscriptions__create_date
+msgid "Created on"
+msgstr "إنشاء على"
+
+#. module: stars_gym
+#: model:ir.model.fields,field_description:stars_gym.field_subscriptions_line__display_name
+#: model:ir.model.fields,field_description:stars_gym.field_subscriptions_subscriptions__display_name
+msgid "Display Name"
+msgstr "الإسم المعروض"
+
+#. module: stars_gym
+#: model:ir.model.fields.selection,name:stars_gym.selection__subscriptions_subscriptions__state__draft
+msgid "Draft"
+msgstr "مسودة"
+
+#. module: stars_gym
+#: model:ir.model.fields,field_description:stars_gym.field_subscriptions_subscriptions__end_date
+msgid "End date"
+msgstr "تاريخ الإنتهاء"
+
+#. module: stars_gym
+#: model:ir.model.fields,field_description:stars_gym.field_subscriptions_subscriptions__legend_done
+msgid "Green Kanban Label"
+msgstr ""
+
+#. module: stars_gym
+#: model:ir.model.fields,field_description:stars_gym.field_subscriptions_subscriptions__legend_normal
+msgid "Grey Kanban Label"
+msgstr ""
+
+#. module: stars_gym
+#: code:addons/stars_gym/models/models.py:0
+#, python-format
+msgid "Gym Invoices"
+msgstr "فواتير مركز كمال الأجسام"
+
+#. module: stars_gym
+#: model:ir.model.fields,field_description:stars_gym.field_subscriptions_line__id
+#: model:ir.model.fields,field_description:stars_gym.field_subscriptions_subscriptions__id
+msgid "ID"
+msgstr ""
+
+#. module: stars_gym
+#: model:ir.model.fields,field_description:stars_gym.field_subscriptions_subscriptions__image
+msgid "Image"
+msgstr "صورة"
+
+#. module: stars_gym
+#: code:addons/stars_gym/models/models.py:0
+#, python-format
+msgid "In Progress"
+msgstr "قيد التنفيذ"
+
+#. module: stars_gym
+#: model:ir.model.fields,field_description:stars_gym.field_subscriptions_subscriptions__inv_count
+msgid "Invoice"
+msgstr "فاتورة"
+
+#. module: stars_gym
+#: model_terms:ir.ui.view,arch_db:stars_gym.model_subscriptions_subscriptions_view_form
+msgid "Invoices"
+msgstr "الفواتير"
+
+#. module: stars_gym
+#: code:addons/stars_gym/models/models.py:0
+#, python-format
+msgid "Invoices Reg"
+msgstr ""
+
+#. module: stars_gym
+#: model:ir.model,name:stars_gym.model_account_move
+msgid "Journal Entries"
+msgstr "القيود اليومية"
+
+#. module: stars_gym
+#: model:ir.model.fields,field_description:stars_gym.field_subscriptions_subscriptions__kanban_state_label
+msgid "Kanban State Label"
+msgstr ""
+
+#. module: stars_gym
+#: model:ir.model.fields,field_description:stars_gym.field_subscriptions_line____last_update
+#: model:ir.model.fields,field_description:stars_gym.field_subscriptions_subscriptions____last_update
+msgid "Last Modified on"
+msgstr ""
+
+#. module: stars_gym
+#: model:ir.model.fields,field_description:stars_gym.field_subscriptions_line__write_uid
+#: model:ir.model.fields,field_description:stars_gym.field_subscriptions_subscriptions__write_uid
+msgid "Last Updated by"
+msgstr ""
+
+#. module: stars_gym
+#: model:ir.model.fields,field_description:stars_gym.field_subscriptions_line__write_date
+#: model:ir.model.fields,field_description:stars_gym.field_subscriptions_subscriptions__write_date
+msgid "Last Updated on"
+msgstr ""
+
+#. module: stars_gym
+#: model:ir.model.fields,field_description:stars_gym.field_subscriptions_subscriptions__line_sub_id
+msgid "Line Sub"
+msgstr ""
+
+#. module: stars_gym
+#: model:ir.model.fields,field_description:stars_gym.field_subscriptions_subscriptions__mobile_star
+msgid "Mobile"
+msgstr "رقم الموبايل"
+
+#. module: stars_gym
+#: model:ir.model,name:stars_gym.model_subscriptions_line
+#: model:ir.model,name:stars_gym.model_subscriptions_subscriptions
+msgid "New Description"
+msgstr ""
+
+#. module: stars_gym
+#: model:res.groups,name:stars_gym.star_gym_access_group
+msgid "Normal"
+msgstr ""
+
+#. module: stars_gym
+#: model:ir.model.fields.selection,name:stars_gym.selection__subscriptions_subscriptions__state__not_subscribed
+msgid "Not Subscribed"
+msgstr "غير مشترك"
+
+#. module: stars_gym
+#: model:ir.model.fields,help:stars_gym.field_subscriptions_subscriptions__legend_blocked
+msgid ""
+"Override the default value displayed for the blocked state for kanban "
+"selection, when the task or issue is in that stage."
+msgstr ""
+
+#. module: stars_gym
+#: model:ir.model.fields,help:stars_gym.field_subscriptions_subscriptions__legend_done
+msgid ""
+"Override the default value displayed for the done state for kanban "
+"selection, when the task or issue is in that stage."
+msgstr ""
+
+#. module: stars_gym
+#: model:ir.model.fields,help:stars_gym.field_subscriptions_subscriptions__legend_normal
+msgid ""
+"Override the default value displayed for the normal state for kanban "
+"selection, when the task or issue is in that stage."
+msgstr ""
+
+#. module: stars_gym
+#: model:ir.model.fields,field_description:stars_gym.field_subscriptions_line__prod_sub
+msgid "Packages"
+msgstr ""
+
+#. module: stars_gym
+#: model:ir.model.fields,field_description:stars_gym.field_subscriptions_line__price_sub
+msgid "Price"
+msgstr "السعر"
+
+#. module: stars_gym
+#: model:ir.model.fields,field_description:stars_gym.field_subscriptions_line__quin_sub
+msgid "Quantities"
+msgstr "الكميات"
+
+#. module: stars_gym
+#: code:addons/stars_gym/models/models.py:0
+#, python-format
+msgid "Ready for Next Stage"
+msgstr "جاهزة للمرحلة المقبلة"
+
+#. module: stars_gym
+#: model:ir.model.fields,field_description:stars_gym.field_subscriptions_subscriptions__legend_blocked
+msgid "Red Kanban Label"
+msgstr ""
+
+#. module: stars_gym
+#: model:ir.model.fields,field_description:stars_gym.field_account_move__rega_ref
+msgid "Rega Ref"
+msgstr ""
+
+#. module: stars_gym
+#: model_terms:ir.ui.view,arch_db:stars_gym.star_gym_search
+#: model_terms:ir.ui.view,arch_db:stars_gym.star_gym_search2
+msgid "Search Patients"
+msgstr ""
+
+#. module: stars_gym
+#: model:ir.ui.menu,name:stars_gym.subscriptions_subscriptions_menu_categ
+msgid "Star Gym"
+msgstr "إدارة الاشتراكات"
+
+#. module: stars_gym
+#: model:ir.module.category,name:stars_gym.star_gym_management
+msgid "Star Gym Managment"
+msgstr "ادارة صالة النجوم"
+
+#. module: stars_gym
+#: model:ir.model.fields,field_description:stars_gym.field_subscriptions_subscriptions__start_date
+msgid "Start Date"
+msgstr "تاريخ البداية"
+
+#. module: stars_gym
+#: model:ir.model.fields,field_description:stars_gym.field_subscriptions_subscriptions__state
+msgid "Status"
+msgstr "حالة"
+
+#. module: stars_gym
+#: model:ir.model.fields,field_description:stars_gym.field_subscriptions_subscriptions__res_subscription
+msgid "Subscriber"
+msgstr ""
+
+#. module: stars_gym
+#: model:ir.ui.menu,name:stars_gym.subscriptions_subscriptions_menu_act
+#: model_terms:ir.ui.view,arch_db:stars_gym.model_subscriptions_subscriptions_view_form
+msgid "Subscriptions"
+msgstr "الإشتراكات"
+
+#. module: stars_gym
+#: model:ir.model.fields,field_description:stars_gym.field_subscriptions_subscriptions__sub_seq
+msgid "Subscriptions No"
+msgstr "رقم المشترك"
+
+#. module: stars_gym
+#: model_terms:ir.ui.view,arch_db:stars_gym.model_subscriptions_subscriptions_view_form
+msgid "Test Non Subscription"
+msgstr "التنشيط اليدوي لصلاحية الإشتراكات"
+
+#. module: stars_gym
+#: model:ir.model.fields.selection,name:stars_gym.selection__subscriptions_subscriptions__state__active
+msgid "active"
+msgstr "مشترك نشط"
+
+#. module: stars_gym
+#: model:ir.actions.act_window,name:stars_gym.model_name_subscriptions_subscriptions_action
+msgid "subscriptions.subscriptions.action"
+msgstr ""
+
+#. module: stars_gym
+#: model:ir.model.fields,field_description:stars_gym.field_subscriptions_line__subscriptions_main
+msgid "subscriptions_main"
+msgstr ""
+
+#. module: stars_gym
+#: model_terms:ir.ui.view,arch_db:stars_gym.subscriptions_subscriptions_kanban
+msgid "اسم المشترك :"
+msgstr ""
+
+#. module: stars_gym
+#: model_terms:ir.ui.view,arch_db:stars_gym.subscriptions_subscriptions_kanban
+msgid "حالة المشترك :"
+msgstr ""
+
+#. module: stars_gym
+#: model_terms:ir.ui.view,arch_db:stars_gym.subscriptions_subscriptions_kanban
+msgid "رقم الهاتف :"
+msgstr ""
+
+#. module: stars_gym
+#: model_terms:ir.ui.view,arch_db:stars_gym.subscriptions_subscriptions_kanban
+msgid "نهاية الإشتراك :"
+msgstr ""

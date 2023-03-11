@@ -1,0 +1,207 @@
+<odoo>
+    <data>
+    <record id="subscription_conversion_view_form" model="ir.ui.view">
+        <field name="name">ssubscription.conversion.view.form</field>
+        <field name="model">subscription.conversion</field>
+        <field name="arch" type="xml">
+            <form string="Subscriptions">
+                <header>
+                    <button name="create_invoice_conv"  string="Create Invoice" class="oe_highlight"
+                        type="object"/>
+                  <button name="stop_sub_conv" states="active"  string="تعليق الإشتراك" class="oe_highlight"
+                    type="object"/>
+                  <button name="non_subscription_cron_conv"  string="Test Non Subscription" class="oe_highlight"
+                 type="object"/>
+               
+                   <field name="state" widget="statusbar"/>
+                </header>
+                <sheet>
+                    <div class="oe_button_box" name="button_box">
+                        
+                        <button name="start_hold_sub_conv" states="hold"  string="استكمال الإشتراك" class="oe_highlight"
+                                type="object"/>
+                        <button class="oe_stat_button" name="invs_view" type="object" icon="fa-list-ol">
+                            <field string="Invoices" name="inv_count_conv" widget="statinfo"/>
+                        </button>  
+
+                    </div>
+          
+              
+          
+                        <field name="image_conv" widget='image' class="oe_myimage"/>
+          
+           
+                <group>
+                        <field name="sud_conv_seq"/>
+                        <field name="ref_seq_sub"/>
+                        <field name="current_subscriber" attrs="{'readonly':['|','|','|',('state', '=', 'active'),('state', '=', 'hold'),('state', '=', 'not_subscribed'),('state', '=', 'cancel')]}"/>
+                        <field name="converted_subscriber" attrs="{'readonly':['|','|','|',('state', '=', 'active'),('state', '=', 'hold'),('state', '=', 'not_subscribed'),('state', '=', 'cancel')]}"/>
+                        <field name="mobile_star_conv" attrs="{'readonly':['|','|','|',('state', '=', 'active'),('state', '=', 'hold'),('state', '=', 'not_subscribed'),('state', '=', 'cancel')]}"/>
+
+                </group>
+                <group>
+
+                    <field name="start_date_conv" attrs="{'readonly':['|','|','|',('state', '=', 'active'),('state', '=', 'hold'),('state', '=', 'not_subscribed'),('state', '=', 'cancel')]}"/>
+                    <field name="end_date_conv" attrs="{'readonly':['|','|','|',('state', '=', 'active'),('state', '=', 'hold'),('state', '=', 'not_subscribed'),('state', '=', 'cancel')]}"/>
+                    <field name="add_field_conv" attrs="{'readonly':['|','|','|',('state', '=', 'active'),('state', '=', 'hold'),('state', '=', 'not_subscribed'),('state', '=', 'cancel')]}"/>
+                    <field name="line_sub_id_conv" attrs="{'readonly':['|','|','|',('state', '=', 'active'),('state', '=', 'hold'),('state', '=', 'not_subscribed'),('state', '=', 'cancel')]}"/>
+                    <field name="difrinet_conv" attrs="{'invisible':['|','|','|',('state', '=', 'draft'),('state', '=', 'active'),('state', '=', 'not_subscribed'),('state', '=', 'cancel')],'readonly':[('state','=','hold')]}"/>
+
+           
+                </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="star_gym_sub_scription_conversion_search" model="ir.ui.view">
+        <field name="name">subscription.conversion.search</field>
+        <field name="model">subscription.conversion</field>
+        <field name="arch" type="xml">
+            <search string="Search Patients">
+      
+                <field name="sud_conv_seq" filter_domain="['|','|', ('sud_conv_seq', 'ilike', self), ('current_subscriber', 'ilike', self),('mobile_star_conv','ilike',self)]"/>
+       
+
+            </search>
+          </field>
+    </record>
+
+    <record id="subscription_conversion_view_tree" model="ir.ui.view">
+        <field name="name">subscription.conversion.view.tree</field>
+        <field name="model">subscription.conversion</field>
+        <field name="arch" type="xml">
+     
+            <tree decoration-muted="state == 'not_subscribed'"
+                  decoration-success="state == 'active'" >
+        
+                <field name="current_subscriber"/>
+                <field name="end_date_conv"/>
+                <field name="sud_conv_seq"/>
+                <field name="state"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="subscription_conversion_kanban" model="ir.ui.view">
+        <field name="name">subscription.conversion.kanban</field>
+        <field name="model">subscription.conversion</field>
+        <field name="arch" type="xml">
+               
+            <kanban> 
+                <field name="id"/>
+                <field name="image_conv"/>
+                <field name="current_subscriber"/>
+                <field name="converted_subscriber"/>
+                <field name="end_date_conv"/>
+                <field name="mobile_star_conv"/>
+                <field name="state"/>
+                <field name="color_conv"/>
+               
+                <!-- <progressbar field="state" colors='{"active": "success", "not_subscribed": "danger", "cancel": "muted"}'/>  -->
+                <templates>
+                           
+              
+                    <t t-name="kanban-box">
+                       
+                        <div t-attf-class="{{!selection_mode ? 'oe_kanban_color_' + kanban_getcolor(record.color_conv.raw_value) : ''}} oe_kanban_card oe_kanban_global_click o_kanban_record_has_image_fill o_star_gym_customer_kanban"  style="width:330px ; height: 300px;">
+                           
+                             <t t-if="record.image_conv.raw_value">
+                                 
+                              
+                                  <div class="o_kanban_image_fill_left d-none d-md-block " 
+                                     t-attf-style=" background-image:url('#{kanban_image('subscription.conversion', 'image_conv', record.id.raw_value)}');width:150px;height: 300px;" />
+                                
+                            </t>
+                            
+                            <t t-else="">
+                                  
+                              
+                                <img class="o_kanban_image" alt="Avatar" t-att-src='_s + "/base/static/img/avatar.png"' style="width:150px ; height: 300px;"/>
+                            
+                            </t>
+                         
+                              <div class="oe_kanban_details" style="width:75px ; height: 300px;">
+                                  <strong class="o_kanban_record_title" style="font-size: 10px; font-weight: bold;"><field name="current_subscriber"/></strong>
+                                  <br/>
+                                   <br/>
+                                    <br/>
+                                  
+                                  <div class="o_kanban_tags_section"/>
+                                  <ul >
+                                      
+                                    <li dir="rtl"> <span style="font-size: 13px; font-weight: bold;" ><field name="current_subscriber" /></span></li>
+                                    
+                                     <br/>
+
+                                     <li dir="rtl"> <span style="font-size: 13px; font-weight: bold;" ><field name="converted_subscriber" /></span></li>
+                                    
+                                     <br/>
+                                     
+                                    <li dir="rtl"><span style="font-size: 13px; font-weight: bold;" ><field name="end_date_conv"/></span></li>
+                                   
+                                     <br/>
+                                    <li dir="rtl"><span style="font-size: 13px; font-weight: bold;" ><field name="mobile_star_conv"/></span></li>
+                                  
+                                     <br/>
+                                   
+                                  </ul>
+                                
+                              </div>
+                              
+                                <div class="oe_kanban_bottom_right" style="width:55px ; height: 300px;" t-if="!selection_mode">
+                                       
+                                        <field name="state" widget="label_selection" options="{'classes': {'hold' : 'primary', 'cancel': 'danger', 'active': 'success', 'not_subscribed': 'warning'}}"/>
+                                         
+                                       
+                                </div>
+                             
+                            </div>
+                        
+                        </t>
+                   
+                </templates>
+                </kanban>
+            </field>
+    </record>
+
+    <record id="subscriptions_line_conv_view_form" model="ir.ui.view">
+            <field name="name">subscriptions.line.conv.view.form</field>
+            <field name="model">subscriptions.line.conv</field>
+            <field name="arch" type="xml">
+            <form string="">
+                <sheet>
+                <group>
+            
+                    <field name="prod_sub_conv"/>
+           
+                    <field name="price_sub_conv"/>
+                </group>
+                </sheet>
+            </form>
+            </field>
+    </record>
+
+    <record id="subscriptions_line_conv_view_tree" model="ir.ui.view">
+        <field name="name">subscriptions.line.conv.view.tree</field>
+        <field name="model">subscriptions.line.conv</field>
+        <field name="arch" type="xml">
+        <tree editable="bottom">
+      
+            <field name="prod_sub_conv"/>
+    
+            <field name="price_sub_conv"/>
+        </tree>
+        </field>
+    </record>
+
+    <record id="subscription_conversion_subscriptions_action" model="ir.actions.act_window">
+        <field name="name">subscriptions.subscriptions.action</field>
+        <field name="res_model">subscription.conversion</field>
+        <field name="view_mode">kanban,tree,form</field>
+    </record>
+
+    <menuitem id="subscriptions_conversion_menu_act" name="Converted Subscribers" parent="subscriptions_subscriptions_menu_categ" action="subscription_conversion_subscriptions_action"/>
+
+    </data>
+</odoo>

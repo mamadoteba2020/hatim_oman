@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="stopall_wiz_form_view" model="ir.ui.view">
+            <field name="name">stopall_wiz_form_view.form</field>
+            <field name="model">stopall.sub.wiz</field>
+            <field name="arch" type="xml">
+                <form string="Select period">
+                  <group>
+                    <field name="open_stop"/>
+                    <h2> ستقوم بايقاف مؤقت لجميع الاشتراكات الموجودة .</h2>
+                  </group>
+                    <footer>
+                        <button string="Create Stop All sub" name="stopall_sub" type="object" class="oe_highlight" attrs="{'invisible':[('open_stop','=',True)]}" />
+                        
+                    </footer>
+                </form>
+            </field>
+        </record>
+
+        <!-- <record id="covert_wiz_wiz_action" model="ir.actions.act_window"> 
+            <field name="name">Create covert subscribtion</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">conv.sub.wiz</field>
+            <field name="view_mode">form</field>
+            <field name="view_id" ref="covert_wiz_form_view"/>
+            <field name="target">new</field>
+        </record> -->
+     
+          
+            
+           
+        
+        <act_window
+            id="stopall_wiz_wiz_action"
+            name="stop all subscribtion"
+            res_model="stopall.sub.wiz"
+            view_mode="form"
+            view_id="stopall_wiz_form_view"
+            target="new"/>
+
+        <menuitem id="stopall_wizard_conversion_menu_act" name="Stop All" parent="subscriptions_subscriptions_menu_categ" action="stopall_wiz_wiz_action"/>
+       
+    </data>
+</odoo>

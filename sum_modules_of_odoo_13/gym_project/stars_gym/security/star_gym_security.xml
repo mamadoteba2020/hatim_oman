@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data noupdate="0">
+        
+    
+        
+        
+
+
+         <record id="star_gym_management" model="ir.module.category">
+           		<field name="name">Star Gym Managment</field>
+           </record>
+           
+           <!-- group of star -->
+           <record id="star_gym_access_group" model="res.groups">
+               <field name="name">Normal</field>
+              
+               <field name="category_id" ref="stars_gym.star_gym_management"/>
+           </record> 
+        
+
+
+
+       
+
+   
+        
+    </data>
+</odoo>

@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="convert_wiz_form_view" model="ir.ui.view">
+            <field name="name">convert_wiz_form_view.form</field>
+            <field name="model">conv.sub.wiz</field>
+            <field name="arch" type="xml">
+                <form string="Select period">
+                  <group>
+                    <field name="res_sub_conv_wiz"/>
+
+                    <field name="subscription_code"/>
+                  </group>
+                    <footer>
+                        <button string="Create convert sub" name="conv_sub" type="object" class="oe_highlight" />
+                        
+                    </footer>
+                </form>
+            </field>
+        </record>
+
+        <!-- <record id="covert_wiz_wiz_action" model="ir.actions.act_window"> 
+            <field name="name">Create covert subscribtion</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">conv.sub.wiz</field>
+            <field name="view_mode">form</field>
+            <field name="view_id" ref="covert_wiz_form_view"/>
+            <field name="target">new</field>
+        </record> -->
+     
+          
+            
+           
+        
+        <act_window
+            id="convertedion_wiz_wiz_action"
+            name="convert subscribtion"
+            res_model="conv.sub.wiz"
+            view_mode="form"
+            view_id="convert_wiz_form_view"
+            target="new"/>
+
+        <menuitem id="subscriptions_wizard_conversion_menu_act" name="Converted wizarSubscribers" parent="subscriptions_subscriptions_menu_categ" action="convertedion_wiz_wiz_action"/>
+       
+    </data>
+</odoo>

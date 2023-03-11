@@ -1,0 +1,39 @@
+
+
+.image-subscribe div{
+    width: 250px;  
+}
+
+/* .o_kanban_view.o_kanban_ungrouped .o_kanban_record {
+
+    width: 508px; */
+
+/* } */
+
+/* .odoo .o_kanban_image_fill_left {
+    position: relative;
+    width: 250px;
+} */
+
+
+.oe_myimage {
+    float: right;
+    margin-bottom: 5px;
+    width: 300px;
+    height:200px;
+   
+    > img {
+        /* width: 200px; */
+        max-width: 300px;
+        /* height:300px; */
+        max-height:400px;
+        vertical-align: top;
+        border: 20px solid black;
+    }
+}
+
+.font_kan {
+    font-size: 35px;
+}
+
+/* $o-main-color-muted */

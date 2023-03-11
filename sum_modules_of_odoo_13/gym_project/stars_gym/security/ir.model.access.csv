@@ -1,0 +1,4 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_subscriptions_star_gym_user,subscriptions_gym_user,model_subscriptions_subscriptions,stars_gym.star_gym_access_group,1,1,1,1
+access_subscriptions_line_user_gym,subscriptions_line_user_gym,model_subscriptions_line,stars_gym.star_gym_access_group,1,1,1,1
+access_subscriptions_account_move_user_gym,subscriptions_account_move_user_gym,model_account_move,star_gym_access_group,1,1,1,1

@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data noupdate="1">
+
+         
+        <record id="subscriptions_subscriptions_cron" model="ir.cron">
+            <field name="name">Check subscriptions Status</field>
+            <field name="model_id" ref="model_subscriptions_subscriptions"/>
+            <field name="type">ir.actions.server</field>
+            <field name="state">code</field>
+            <field name="code">model.non_subscription_cron()</field>
+            <field name="interval_number">1</field>
+            <field name="interval_type">minutes</field>
+            <field name="numbercall">-1</field>
+        </record>
+        
+
+        <!-- <record id="subscriptions_clore_cron" model="ir.cron">
+            <field name="name">Check subscriptions clore</field>
+            <field name="model_id" ref="model_subscriptions_subscriptions"/>
+            <field name="type">ir.actions.server</field>
+            <field name="state">code</field>
+            <field name="code">model.set_clore_state()</field>
+            <field name="interval_number">1</field>
+            <field name="interval_type">minutes</field>
+            <field name="numbercall">-1</field>
+        </record> -->
+
+
+
+    </data>
+</odoo>
+
+
+<!--   <field name="interval_type">days</field>     -->
