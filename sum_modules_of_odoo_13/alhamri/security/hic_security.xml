@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data noupdate="0">
+        
+    
+        
+        
+
+
+         <record id="hic_management" model="ir.module.category">
+           		<field name="name">Hic Managment</field>
+           </record>
+           
+           <!-- group of Requister -->
+           <record id="hic_access_group" model="res.groups">
+               <field name="name">Normal</field>
+              
+               <field name="category_id" ref="alhamri.hic_management"/>
+           </record> 
+           <!-- group of manager -->
+           <!-- <record id="hic_manager_access_group" model="res.groups">
+               <field name="name">Manager</field>
+               <field name="help">Access with Manager</field>
+               <field name="category_id" ref="alhamri.hic_management"/>
+               <field name="implied_ids" eval="[(4,ref('alhamri.hic_access_group'))]"/>
+           </record> -->
+
+
+
+            <!-- <record model="ir.module.category" id="module_category_hospital">
+        <field name="name">Hospital Management</field>
+        <field name="description">Category For Hospital</field>
+        <field name="sequence">45</field>
+    </record>
+
+    <record id="group_hospital_doctor" model="res.groups">
+        <field name="name">Doctor</field>
+        <field name="category_id" ref="module_category_hospital"/>
+    </record> -->
+        
+    </data>
+</odoo>

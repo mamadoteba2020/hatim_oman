@@ -1,0 +1,4 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_list_itemq_alhamri_user,list_itemq_alhamri_user,model_list_itemq,alhamri.hic_access_group,1,1,1,1
+access_itemq_user_alhamri,itemq_user_alhamri,model_itemq_itemq,alhamri.hic_access_group,1,1,1,1
+access_delivery_method_user,delivery_method_user,model_delivery_method,alhamri.hic_access_group,1,1,1,0

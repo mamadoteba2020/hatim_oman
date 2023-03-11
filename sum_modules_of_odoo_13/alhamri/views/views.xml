@@ -1,0 +1,191 @@
+<odoo>
+  <data>
+      
+        <record id="account_move_HIC_view_id" model="ir.ui.view">
+          <field name="name">account.move.inherit.HIC.view.form</field>
+          <field name="model">account.move</field>
+          <field name="inherit_id" ref="account.view_move_form"/>  
+          <!-- <field name="domain">[('type','=','out_invoice')]</field>  -->
+          <field name="arch" type="xml">
+              <!-- Add your xpath here -->
+            <xpath expr="//field[@name='invoice_date']" position="after">
+                <field name="consignee" attrs="{'invisible': ['|','|','|','|','|',('type','=','in_invoice'),('type','=','out_refund'), ('type', '=','entry'),('type','=','out_receipt'),('type','=','in_receipt'),('type','=','in_refund')] }"/>
+                <field name="address_hic" attrs="{'invisible': ['|','|','|','|','|',('type','=','in_invoice'),('type','=','out_refund'), ('type', '=','entry'),('type','=','out_receipt'),('type','=','in_receipt'),('type','=','in_refund')] }"/>
+                <field name="pin_code" attrs="{'invisible': ['|','|','|','|','|',('type','=','in_invoice'),('type','=','out_refund'), ('type', '=','entry'),('type','=','out_receipt'),('type','=','in_receipt'),('type','=','in_refund')] }"/>
+                <field name="tel_hic" attrs="{'invisible': ['|','|','|','|','|',('type','=','in_invoice'),('type','=','out_refund'), ('type', '=','entry'),('type','=','out_receipt'),('type','=','in_receipt'),('type','=','in_refund')] }"/>
+            </xpath>
+            
+             <xpath expr="//field[@name='partner_id']" position="after">
+               <!-- Add your fields here -->
+               <field name="dmethod" attrs="{'invisible': ['|','|','|','|','|',('type','=','in_invoice'),('type','=','out_refund'), ('type', '=','entry'),('type','=','out_receipt'),('type','=','in_receipt'),('type','=','in_refund')] }"/>
+               <field name="valueofgoods" attrs="{'invisible': ['|','|','|','|','|',('type','=','in_invoice'),('type','=','out_refund'), ('type', '=','entry'),('type','=','out_receipt'),('type','=','in_receipt'),('type','=','in_refund')] }"/>
+             </xpath>
+    
+
+            <xpath expr="//field[@name='narration']" position="before">
+              <!-- Add your fields here -->
+              <field name="itemqlist_id"/>
+              <!-- <field name="qty_total"/> -->
+              <!-- <group>
+                <field name="total_qty"/>
+              </group> -->
+              <!-- <field name="qty_total"/> -->
+            </xpath>
+     
+            <xpath expr="//field[@name='invoice_payment_term_id']" position="attributes">
+              <!-- Add your fields here -->
+              <attribute name="invisible">1</attribute>
+            </xpath>
+            <xpath expr="//label[@name='Payment_Terms']" position="attributes">
+              <!-- Add your fields here -->
+              <attribute name="invisible">1</attribute>
+            </xpath>
+            <!-- <xpath expr="//span[@name='span_or']" position="attributes">
+              
+              <attribute name="invisible">1</attribute>
+            </xpath> -->
+            <xpath expr="//field[@name='invoice_date_due']" position="attributes">
+              <!-- Add your fields here -->
+              <attribute name="invisible">1</attribute>
+            </xpath>
+            
+
+            <!-- <xpath expr="//field[@name='invoice_line_ids']/tree/field[@name='quantity']" position="attributes">
+                <attribute name="string">Pics</attribute>
+            </xpath> -->
+          </field>
+        </record>
+         
+        <!-- list.itemq tree view -->
+            <!-- res.partner inherit form view -->
+        <!-- <record id="res_partner_hicm_view_id" model="ir.ui.view">
+          <field name="name">res_partner_hic_inherit.view.form</field>
+          <field name="model">res.partner</field>
+          <field name="inherit_id" ref="base.view_partner_form"/>
+          <field name="arch" type="xml">
+            
+            <xpath expr="//field[@name='other_id']" position="attributes">
+            
+              <attribute name="string">ID</attribute>
+            </xpath>
+          </field>
+        </record> -->
+        <!-- delivery.method form view -->
+        <record id="delivery_method_view_form" model="ir.ui.view">
+          <field name="name">delivery.method.view.form</field>
+          <field name="model">delivery.method</field>
+          <field name="arch" type="xml">
+            <form string="">
+              <sheet>
+                <group>
+                  <!-- Add your fields here -->
+                  <field name="name"/>
+                </group>
+              </sheet>
+            </form>
+          </field>
+        </record>
+        <!-- delivery.method tree view -->
+        <record id="delivery_method_view_tree" model="ir.ui.view">
+          <field name="name">delivery.method.view.tree</field>
+          <field name="model">delivery.method</field>
+          <field name="arch" type="xml">
+            <tree>
+              <!-- Add your fields here -->
+              <field name="name"/>
+            </tree>
+          </field>
+        </record>
+
+        <!-- delivery.method action window -->
+        <record id="delivery_method_action" model="ir.actions.act_window">
+          <field name="name">delivery.method.action</field>
+          <field name="res_model">delivery.method</field>
+          <field name="view_mode">tree,form</field>
+        </record>
+        <!-- list.itemq form view -->
+        <record id="list_itemq_view_form" model="ir.ui.view">
+          <field name="name">list.itemq.view.form</field>
+          <field name="model">list.itemq</field>
+          <field name="arch" type="xml">
+            <form string="List Item">
+              <sheet>
+                <group>
+                  <!-- Add your fields here -->
+                  <field name="name"/>
+                  <field name="qty_itemq"/>
+                  <field name="Wight_itemq"/>
+                </group>
+              </sheet>
+            </form>
+          </field>
+        </record>
+        <!-- list.itemq tree view -->
+        <record id="list_itemq_view_tree" model="ir.ui.view">
+          <field name="name">list.itemq.view.tree</field>
+          <field name="model">list.itemq</field>
+          <field name="arch" type="xml">
+            <tree editable="bottom">
+              <!-- Add your fields here -->
+                <field name="name" widget="many2many_tags"/>
+                <field name="qty_itemq"  sum="Total Fees"/>
+                <field name="Wight_itemq"  sum="Total Fees"/>
+                
+            </tree>
+          </field>
+        </record>
+        
+      
+        <!-- itemq.itemq form view -->
+        <record id="itemq_itemq_view_form" model="ir.ui.view">
+          <field name="name">itemq.itemq.view.form</field>
+          <field name="model">itemq.itemq</field>
+          <field name="arch" type="xml">
+            <form string="">
+              <sheet>
+                <group>
+                  <!-- Add your fields here -->
+                  <field name="name"/>
+                </group>
+              </sheet>
+            </form>
+          </field>
+        </record>
+        <!-- itemq.itemq tree view -->
+        <record id="itemq_itemq_view_tree" model="ir.ui.view">
+          <field name="name">itemq.itemq.view.tree</field>
+          <field name="model">itemq.itemq</field>
+          <field name="arch" type="xml">
+            <tree>
+              <!-- Add your fields here -->
+              <field name="name"/>
+            </tree>
+          </field>
+        </record>
+
+
+        <!-- itemq.itemq action window -->
+        <record id="itemq_itemq_action" model="ir.actions.act_window">
+          <field name="name">itemq.itemq.action</field>
+          <field name="res_model">itemq.itemq</field>
+          <field name="view_mode">tree,form</field>
+        </record>
+        <!-- list.itemq action window -->
+        <!-- <record id="list_itemq_action" model="ir.actions.act_window">
+          <field name="name">list.itemq.action</field>
+          <field name="res_model">list.itemq</field>
+          <field name="view_mode">tree,form</field>
+        </record> -->
+        <!-- This Menu Item will appear in the Upper bar, that's why It needs NO parent or action -->
+        <menuitem id="alharmi_menu_root" name="shipping" />
+        <!-- This Menu Item must have a parent and an action -->
+        <menuitem id="itemq_itemq_menu_act" name="Item" parent="alharmi_menu_root" action="itemq_itemq_action"/>
+
+
+        <!-- This Menu Item must have a parent and an action -->
+        <menuitem id="delivery_method_menu_act" name="Delivery Method" parent="alharmi_menu_root" action="delivery_method_action"/>
+        <!-- This Menu Item must have a parent and an action -->
+        <!-- <menuitem id="list_itemq_menu_act" name="Item List" parent="alharmi_menu_root" action="list_itemq_action"/> -->
+
+  </data>
+</odoo>
