@@ -1,0 +1,279 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* tax_report
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 13.0+e\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2020-07-29 10:57+0000\n"
+"PO-Revision-Date: 2020-07-29 14:05+0300\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: \n"
+"Language: ar\n"
+"X-Generator: Poedit 2.4\n"
+
+#. module: tax_report
+#: model_terms:ir.ui.view,arch_db:tax_report.report_tax_report_detailed
+msgid "<b>From Date: </b>"
+msgstr "<b>من تاريخ: </b>"
+
+#. module: tax_report
+#: model_terms:ir.ui.view,arch_db:tax_report.report_tax_report_detailed
+msgid "<b>To Date:</b>"
+msgstr "<b>إلى تاريخ:</b>"
+
+#. module: tax_report
+#: model_terms:ir.ui.view,arch_db:tax_report.report_tax_report_detailed
+msgid ""
+"<strong style=\"font-size: 16px;font-weght: bold;\">Tax Audit "
+"Report</strong>"
+msgstr ""
+"<strong style=\"font-size: 16px;font-weght: bold;\">تقرير "
+"تفاصيل الضريبة</strong>"
+
+#. module: tax_report
+#: model_terms:ir.ui.view,arch_db:tax_report.report_tax_report
+msgid "<strong>Net Tax Due</strong>"
+msgstr "<strong>صافي الضريبة المستحقة</strong>"
+
+#. module: tax_report
+#: model_terms:ir.ui.view,arch_db:tax_report.report_tax_report
+#: model_terms:ir.ui.view,arch_db:tax_report.report_tax_report_detailed
+msgid "<strong>Purchase Total</strong>"
+msgstr "<strong>إجمالي المشتريات</strong>"
+
+#. module: tax_report
+#: model_terms:ir.ui.view,arch_db:tax_report.report_tax_report
+#: model_terms:ir.ui.view,arch_db:tax_report.report_tax_report_detailed
+msgid "<strong>Sales Total</strong>"
+msgstr "<strong>إجمالي المبيعات</strong>"
+
+#. module: tax_report
+#: model:ir.model.fields.selection,name:tax_report.selection__tax_report__target_moves__all_entries
+msgid "All Entries"
+msgstr "كل القيود"
+
+#. module: tax_report
+#: model:ir.model.fields.selection,name:tax_report.selection__tax_report__target_moves__all_posted
+msgid "All Posted Entries"
+msgstr "القيود المرحلة فقط"
+
+#. module: tax_report
+#: model_terms:ir.ui.view,arch_db:tax_report.report_tax_report
+#: model_terms:ir.ui.view,arch_db:tax_report.report_tax_report_detailed
+msgid "Base Amount"
+msgstr "المبلغ الاساسي"
+
+#. module: tax_report
+#: model_terms:ir.ui.view,arch_db:tax_report.account_tax_report_form_wizard_view
+msgid "Cancel"
+msgstr "الغاء"
+
+#. module: tax_report
+#: model:ir.model.fields,field_description:tax_report.field_tax_report__create_uid
+msgid "Created by"
+msgstr "أنشئ بواسطة"
+
+#. module: tax_report
+#: model:ir.model.fields,field_description:tax_report.field_tax_report__create_date
+msgid "Created on"
+msgstr "انشئ في"
+
+#. module: tax_report
+#: model_terms:ir.ui.view,arch_db:tax_report.report_tax_report_detailed
+msgid "Customer"
+msgstr "العميل"
+
+#. module: tax_report
+#: model:ir.model.fields,field_description:tax_report.field_tax_report__date_from
+msgid "Date From"
+msgstr "من تاريخ"
+
+#. module: tax_report
+#: model:ir.model.fields,field_description:tax_report.field_tax_report__date_to
+msgid "Date To"
+msgstr "إلى تاريخ"
+
+#. module: tax_report
+#: model_terms:ir.ui.view,arch_db:tax_report.report_tax_report
+#: model_terms:ir.ui.view,arch_db:tax_report.report_tax_report_detailed
+msgid "Description"
+msgstr "الوصف"
+
+#. module: tax_report
+#: model:ir.model.fields,field_description:tax_report.field_report_tax_report_action_report_tax_report__display_name
+#: model:ir.model.fields,field_description:tax_report.field_report_tax_report_action_report_tax_report_detailed__display_name
+#: model:ir.model.fields,field_description:tax_report.field_tax_report__display_name
+msgid "Display Name"
+msgstr "اسم العرض"
+
+#. module: tax_report
+#: code:addons/tax_report/report/report_tax_report.py:0
+#, python-format
+msgid "Form content is missing, this report cannot be printed."
+msgstr "بعض بيانات النموذج فارغة، لا يمكن طباعة هذا التقرير."
+
+#. module: tax_report
+#: model_terms:ir.ui.view,arch_db:tax_report.report_tax_report
+msgid "From:"
+msgstr "من:"
+
+#. module: tax_report
+#: model:ir.model.fields,field_description:tax_report.field_report_tax_report_action_report_tax_report__id
+#: model:ir.model.fields,field_description:tax_report.field_report_tax_report_action_report_tax_report_detailed__id
+#: model:ir.model.fields,field_description:tax_report.field_tax_report__id
+msgid "ID"
+msgstr ""
+
+#. module: tax_report
+#: model_terms:ir.ui.view,arch_db:tax_report.report_tax_report_detailed
+msgid "Invoice Date"
+msgstr "تاريخ الفاتورة"
+
+#. module: tax_report
+#: model_terms:ir.ui.view,arch_db:tax_report.report_tax_report_detailed
+msgid "Invoice No."
+msgstr "رقم الفاتورة"
+
+#. module: tax_report
+#: model:ir.actions.act_window,name:tax_report.action_move_journal_line_1
+msgid "Journal Entries"
+msgstr "قيد اليومية"
+
+#. module: tax_report
+#: model:ir.model.fields,field_description:tax_report.field_report_tax_report_action_report_tax_report____last_update
+#: model:ir.model.fields,field_description:tax_report.field_report_tax_report_action_report_tax_report_detailed____last_update
+#: model:ir.model.fields,field_description:tax_report.field_tax_report____last_update
+msgid "Last Modified on"
+msgstr "اخر تحديث في"
+
+#. module: tax_report
+#: model:ir.model.fields,field_description:tax_report.field_tax_report__write_uid
+msgid "Last Updated by"
+msgstr "اخر تحديث بواسطة"
+
+#. module: tax_report
+#: model:ir.model.fields,field_description:tax_report.field_tax_report__write_date
+msgid "Last Updated on"
+msgstr "اخر تحديث في"
+
+#. module: tax_report
+#: model_terms:ir.ui.view,arch_db:tax_report.report_tax_report
+msgid "Percentage(%)"
+msgstr "النسبة(%)"
+
+#. module: tax_report
+#: model:ir.model.fields.selection,name:tax_report.selection__tax_report__report_typ_1__print
+#: model_terms:ir.ui.view,arch_db:tax_report.account_tax_report_form_wizard_view
+msgid "Print"
+msgstr "تقرير إجمالي"
+
+#. module: tax_report
+#: model_terms:ir.ui.view,arch_db:tax_report.account_tax_report_form_wizard_view
+msgid "Print Tax Audit"
+msgstr "تقرير تفصيلي"
+
+#. module: tax_report
+#: model_terms:ir.ui.view,arch_db:tax_report.report_tax_report
+#: model_terms:ir.ui.view,arch_db:tax_report.report_tax_report_detailed
+msgid "Purchase Taxes"
+msgstr "ضرائب المشتريات"
+
+#. module: tax_report
+#: model:ir.model.fields.selection,name:tax_report.selection__tax_report__qs__q1
+msgid "Q1"
+msgstr "الربع الأول"
+
+#. module: tax_report
+#: model:ir.model.fields.selection,name:tax_report.selection__tax_report__qs__q2
+msgid "Q2"
+msgstr "الربع الثاني"
+
+#. module: tax_report
+#: model:ir.model.fields.selection,name:tax_report.selection__tax_report__qs__q3
+msgid "Q3"
+msgstr "الربع الثالث"
+
+#. module: tax_report
+#: model:ir.model.fields.selection,name:tax_report.selection__tax_report__qs__q4
+msgid "Q4"
+msgstr "الربع الرابع"
+
+#. module: tax_report
+#: model_terms:ir.ui.view,arch_db:tax_report.report_tax_report
+#: model_terms:ir.ui.view,arch_db:tax_report.report_tax_report_detailed
+msgid "Sales Taxes"
+msgstr "ضرائب المبيعات"
+
+#. module: tax_report
+#: model:ir.model.fields,field_description:tax_report.field_tax_report__target_moves
+msgid "Target Moves"
+msgstr "الحركات"
+
+#. module: tax_report
+#: model_terms:ir.ui.view,arch_db:tax_report.report_tax_report
+#: model_terms:ir.ui.view,arch_db:tax_report.report_tax_report_detailed
+msgid "Tax Amount"
+msgstr "قيمة الضريبة"
+
+#. module: tax_report
+#: model:ir.model.fields,field_description:tax_report.field_tax_report__qs
+msgid "Tax Period"
+msgstr "فترة الضريبة"
+
+#. module: tax_report
+#: model:ir.actions.act_window,name:tax_report.action_account_tax_report
+#: model:ir.actions.report,name:tax_report.action_report_tax_report
+#: model:ir.actions.report,name:tax_report.action_report_tax_report_detailed
+#: model:ir.model,name:tax_report.model_report_tax_report_action_report_tax_report
+#: model:ir.model,name:tax_report.model_report_tax_report_action_report_tax_report_detailed
+#: model:ir.model,name:tax_report.model_tax_report
+#: model:ir.ui.menu,name:tax_report.menu_account_partner_ledger_bc
+#: model_terms:ir.ui.view,arch_db:tax_report.report_tax_report
+msgid "Tax Report"
+msgstr "تقرير الضريبة"
+
+#. module: tax_report
+#: model:ir.model.fields,field_description:tax_report.field_tax_report__tax_ids
+msgid "Taxes"
+msgstr "الضرائب"
+
+#. module: tax_report
+#: model_terms:ir.ui.view,arch_db:tax_report.report_tax_report
+msgid "To:"
+msgstr "إلى:"
+
+#. module: tax_report
+#: model_terms:ir.ui.view,arch_db:tax_report.report_tax_report_detailed
+msgid "Total Amount"
+msgstr "اجمالي المبلغ"
+
+#. module: tax_report
+#: model_terms:ir.ui.view,arch_db:tax_report.report_tax_report_detailed
+msgid "VAT No."
+msgstr "الرقم الضريبي"
+
+#. module: tax_report
+#: model:ir.model.fields.selection,name:tax_report.selection__tax_report__report_typ_1__view
+msgid "View"
+msgstr "عرض"
+
+#. module: tax_report
+#: model_terms:ir.ui.view,arch_db:tax_report.account_tax_report_form_wizard_view
+msgid "View Details"
+msgstr "عرض التفاصيل"
+
+#. module: tax_report
+#: model:ir.model.fields,field_description:tax_report.field_tax_report__report_typ_1
+msgid "View or Print"
+msgstr "عرض أو طباعة"
+
+#. module: tax_report
+#: model_terms:ir.ui.view,arch_db:tax_report.account_tax_report_form_wizard_view
+msgid "or"
+msgstr "أو"

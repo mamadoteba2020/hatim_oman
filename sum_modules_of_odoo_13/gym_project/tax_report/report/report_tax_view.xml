@@ -1,0 +1,671 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    
+    <template id="report_tax_report">
+        <t t-call="web.html_container">
+            <t t-call="web.internal_layout">
+            <!-- t t-call="tax_report.tr_layout" -->
+                <div class="page">
+                    <div style="text-align: right;">
+                        <table class="table table-condensed" style="border:2pt solid #000000;text-align: right;">
+                            <tr>
+                                <td style="text-align: left;">
+                                    <img style="margin-left: 0px;text-align: left;" width="120" height="140" src="/tax_report/static/src/img/zaka.png"/>
+                                </td>
+                                <td style="text-align: center;">
+                                    <p t-esc="res_company.name" style="font-size: 28;"/>
+                                    <p style="font-size: 22;">Tax Report</p>
+                                    <strong><p style="font-size: 17;">From: <t t-raw="'%s' %   date_from  if  date_from else ''" /> To: <t t-raw="'%s' %   date_to  if  date_to else ''" /></p></strong>
+                                </td>
+                                <td style="text-align: right;">
+                                    <img style="margin-left: 0px;text-align: right;" width="150" height="140" src="/tax_report/static/src/img/zaka2.jpg"/>
+                                </td>
+                            </tr>
+                        </table>
+
+
+                        <strong><p style="font-size: 22;text-align: center;">Sales Taxes</p></strong>
+                        <table class="table table-condensed" style="border:2pt solid #000000;">
+                            <tr style="background: #ccc">
+                                <td style="border:1pt solid #000000;text-align: left;">
+                                   Description
+                                </td>
+                                <td style="border:1pt solid #000000;text-align: left;">
+                                   Base Amount
+                                </td>
+                                
+                                <td style="border:1pt solid #000000;text-align: left;">
+                                   Tax Amount
+                                </td>
+                                <td style="border:1pt solid #000000;text-align: left;">
+                                   Base Refund
+                                </td>
+                                <td style="border:1pt solid #000000;text-align: left;">
+                                   Refund Tax
+                                </td>
+                                <td style="border:1pt solid #000000;text-align: left;">
+                                   Percentage(%)
+                                </td>
+                            </tr>
+                            <tr t-foreach="report_total" t-as="o">
+                                <td style="border:1pt solid #000000;text-align: left;">
+                                   <t t-raw="'%s' %   o.get('tax_name')  if  o.get('tax_name') else ''" />
+                                </td>
+                                <td style="border:1pt solid #000000;text-align: center;">
+                                   <t t-raw="'%s' %   '{:,}'.format(o.get('base_sale'))  if  o.get('base_sale') else ''" />
+                                </td>
+                                
+                                <td style="border:1pt solid #000000;text-align: center;">
+                                    <t t-raw="'%s' %   '{:,}'.format(o.get('sale_tax'))  if  o.get('sale_tax') else ''" />
+                                </td>
+                                <td style="border:1pt solid #000000;text-align: center;">
+                                    <t t-raw="'%s' %  '{:,}'.format(o.get('s_ref_base'))  if  o.get('s_ref_base') else ''" />
+                                </td>
+
+                                <td style="border:1pt solid #000000;text-align: center;">
+                                    <t t-raw="'%s' %   '{:,}'.format(o.get('s_ref'))  if  o.get('s_ref') else ''" />
+                                </td>
+                                <td style="border:1pt solid #000000;text-align: center;">
+                                    <t t-raw="'%s' %   '{:,}'.format(o.get('per'))  if  o.get('per') else ''" />
+                                </td>
+                            </tr>
+                           
+                            <tr style="background: #ccc">
+                                <td style="border:1pt solid #000000;text-align: left;">
+                                   <strong>Sales Total</strong>
+                                </td>
+                                <td class="text-center" style="border:1pt solid #000000;">
+                                   <t t-raw="'%s' %   sale_tot  if  sale_tot else ''" />
+                                </td>
+                                <td class="text-center" style="border:1pt solid #000000;">
+                                   <t t-raw="'%s' %   sale  if  sale else ''" />
+                                </td>
+                                <td class="text-center" style="border:1pt solid #000000;">
+                                   <t t-raw="'%s' %   ss_ref_tot  if  ss_ref_tot else ''" />
+                                </td>
+                                <td class="text-center">
+                                   <t t-raw="'%s' %   ss_ref  if  ss_ref else ''" />
+                                </td>
+                                <td class="text-center">
+
+                                </td>
+                            </tr>
+                        </table>
+                        <strong><p style="font-size: 22;text-align: center;">Purchase Taxes</p></strong>
+                        <table class="table table-condensed" style="border:2pt solid #000000;">
+                            <tr style="background: #ccc">
+                                <td style="border:1pt solid #000000;text-align: left;">
+                                   Description
+                                </td>
+                                <td style="border:1pt solid #000000;text-align: left;">
+                                   Base Amount
+                                </td>
+                                
+                                <td style="border:1pt solid #000000;text-align: left;">
+                                   Tax Amount
+                                </td>
+                                <td style="border:1pt solid #000000;text-align: left;">
+                                   Base Refund
+                                </td>
+                                <td style="border:1pt solid #000000;text-align: left;">
+                                   Refund Tax
+                                </td>
+                                <td style="border:1pt solid #000000;text-align: left;">
+                                   Percentage(%)
+                                </td>
+                            </tr>
+                            <tr t-foreach="report_total_1" t-as="o1">
+                                <td style="border:1pt solid #000000;text-align: left;">
+                                   <t t-raw="'%s' %   o1.get('tax_name')  if  o1.get('tax_name') else ''" />
+                                </td>
+                                <td style="border:1pt solid #000000;text-align: center;">
+                                   <t t-raw="'%s' %   '{:,}'.format(o1.get('base_purchase'))  if  o1.get('base_purchase') else ''" />
+                                </td>
+                                
+                                <td style="border:1pt solid #000000;text-align: center;">
+                                    <t t-raw="'%s' %   '{:,}'.format(o1.get('purchase_tax'))  if  o1.get('purchase_tax') else ''" />
+                                </td>
+                                <td style="border:1pt solid #000000;text-align: center;">
+                                    <t t-raw="'%s' %   '{:,}'.format(o1.get('p_ref_base'))  if  o1.get('p_ref_base') else ''" />
+                                </td>
+
+                                <td style="border:1pt solid #000000;text-align: center;">
+                                    <t t-raw="'%s' %   '{:,}'.format(o1.get('p_ref'))  if  o1.get('p_ref') else ''" />
+                                </td>
+                                <td style="border:1pt solid #000000;text-align: center;">
+                                    <t t-raw="'%s' %   '{:,}'.format(o1.get('per'))  if  o1.get('per') else ''" />
+                                </td>
+                            </tr>
+                           
+                            <tr style="background: #ccc">
+                                <td style="border:1pt solid #000000;text-align: left;">
+                                   <strong>Purchase Total</strong>
+                                </td>
+                                <td class="text-center" style="border:1pt solid #000000;">
+                                    <t t-raw="'%s' %   purchase_tot  if  purchase_tot else ''" />
+                                </td>
+                                <td class="text-center" style="border:1pt solid #000000;">
+                                   <t t-raw="'%s' %   purchase  if  purchase else ''" />
+                                </td>
+                                <td class="text-center" style="border:1pt solid #000000;">
+                                    <t t-raw="'%s' %   pp_ref_tot  if  pp_ref_tot else ''" />
+                                </td>
+                                <td class="text-center">
+                                    <t t-raw="'%s' %   pp_ref  if  pp_ref else ''" />
+                                </td>
+                                <td class="text-center">
+
+                                </td>
+                            </tr>
+                        </table>
+
+                        <table class="table table-condensed" style="border:2pt solid #000000;">
+                            
+                            <tr style="background: #ccc">
+                                <td style="border:1pt solid #000000;text-align: left;">
+                                    <strong>Net Tax Due</strong>
+                                </td>
+                                <td class="text-center">
+                                    <span style="font-weight: bold;" t-raw="tot"/>
+                                </td>
+                            </tr>
+                        </table>
+
+
+
+                    </div>
+                    <!-- table class="table table-condensed">
+                        <thead>
+                            <tr><th class="text-left">Name</th>
+                                <th class="text-left">Base Amount</th>
+                                <th class="text-left">Tax Amount</th>
+                                <th class="text-left">Partner</th>
+                                <th class="text-right">Accounting Date</th>
+                                <th class="text-right">Ref.</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><h4><b>Tax Balance</b></h4></td>
+                                <td><span style="font-weight: bold;" t-esc="grand_base_total"/></td>
+                                <td><span style="font-weight: bold;" t-esc="grand_tax_total"/></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td><h4>Taxes Paid</h4></td>
+                                <td><span style="font-weight: bold;" t-esc="grand_base"/></td>
+                                <td><span style="font-weight: bold;" t-esc="grand_tax"/></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                            <tr t-foreach="move_lines" t-as="m">
+                                <t t-if="m['level'] != 0">
+                                    <td>
+                                        <span style="font-weight: normal; color: white;" t-esc="'..' * 1"/>
+                                        <span style="font-weight: normal;" t-esc="m['name']"/>
+                                    </td>
+                                    <td><t t-esc="m['base_amt']"/></td>
+                                    <td><t t-esc="m['tax_amt']"/></td>
+                                    <td><t t-esc="m['partner_name']"/></td>
+                                    <td><t t-esc="m['accounting_date']"/></td>
+                                    <td class="text-right"><t t-esc="m['ref']"/></td>    
+                                </t>
+                                <t t-if="m['level'] == 0">
+                                    <td>
+                                        <span style="font-weight: bold;" t-esc="m['name']"/>
+                                    </td>
+                                    <td><b><t t-esc="m['base_amt']"/></b></td>
+                                    <td><b><t t-esc="m['tax_amt']"/></b></td>
+                                    <td><b><t t-esc="m['partner_name']"/></b></td>
+                                    <td><b><t t-esc="m['accounting_date']"/></b></td>
+                                    <td class="text-right"><b><t t-esc="m['ref']"/></b></td>
+                                </t>
+                            </tr>
+                            <tr>
+                                <td><h4>Taxes Received</h4></td>
+                                <td><span style="font-weight: bold;" t-esc="received_grand_base"/></td>
+                                <td><span style="font-weight: bold;" t-esc="received_grand_tax"/></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                            <tr t-foreach="received_move_lines" t-as="r">
+                                <t t-if="r['level'] != 0">
+                                    <td>
+                                        <span style="font-weight: normal; color: white;" t-esc="'..' * 1"/>
+                                        <span style="font-weight: normal;" t-esc="r['name']"/>
+                                    </td>
+                                    <td><t t-esc="r['base_amt']"/></td>
+                                    <td><t t-esc="r['tax_amt']"/></td>
+                                    <td><t t-esc="r['partner_name']"/></td>
+                                    <td><t t-esc="r['accounting_date']"/></td>
+                                    <td class="text-right"><t t-esc="r['ref']"/></td>
+                                </t>
+                                <t t-if="r['level'] == 0">
+                                    <td>
+                                        <span style="font-weight: bold;" t-esc="r['name']"/>
+                                    </td>
+                                    <td><b><t t-esc="r['base_amt']"/></b></td>
+                                    <td><b><t t-esc="r['tax_amt']"/></b></td>
+                                    <td><b><t t-esc="r['partner_name']"/></b></td>
+                                    <td><b><t t-esc="r['accounting_date']"/></b></td>
+                                    <td class="text-right"><b><t t-esc="r['ref']"/></b></td>
+                                </t>
+                            </tr>
+                        </tbody>
+                    </table -->
+                </div>
+            </t>
+        </t>
+    </template>
+    
+
+    <template id="report_tax_report_detailed">
+        <t t-call="web.html_container">
+            <t t-call="web.internal_layout">
+                <div class="page">
+
+                    <div class="text-center">
+                                <h3>
+                                    <strong style="font-size: 16px;font-weght: bold;">Tax Audit Report</strong>
+                                </h3>
+                            </div>
+                            <div class="text-center">
+                                <b>From Date: </b>
+                                <!-- span t-esc="datee" / -->
+                                <span t-raw="'%s' % date_from if date_from else ''" />
+                                <b>To Date:</b>
+                                <span t-raw="'%s' % date_to if date_to else ''" />
+                    </div>
+                    <!--
+                            'desc_r': desc_r,
+                                             'partner_r': partner_r,
+                                             'vat_no_r': vat_no_r, 
+                                             'inv_date_r': inv_date_r,
+                                             'inv_no_r': inv_no_r,
+                                             's_base_total_r': format(round(abs(s_base_total_r), 2), ","), 
+                                             's_tax_total_r': format(round(abs(s_tax_total_r), 2), ","),
+                                             's_total_r': format(round(abs(s_total), 2), ","),
+                                             'per_r': tax.amount})
+
+
+
+                    -->
+                    <br></br>
+                    <strong><p style="font-size: 22;text-align: center;">Sales Taxes</p></strong>
+                    <table class="table table-condensed" style="border:1pt solid #000000;">
+                            <tr style="background: #ccc">
+                                <td style="border:1pt solid #000000;text-align: left;font-size: 11px;">
+                                   Description
+                                </td>
+                                <td style="border:1pt solid #000000;text-align: left;font-size: 11px;">
+                                   Customer
+                                </td>
+                                
+                                <td style="border:1pt solid #000000;text-align: left;font-size: 11px;">
+                                   VAT No.
+                                </td>
+                                <td style="border:1pt solid #000000;text-align: left;font-size: 11px;">
+                                   Invoice Date
+                                </td>
+                                <td style="border:1pt solid #000000;text-align: left;font-size: 11px;">
+                                   Invoice No.
+                                </td>
+                                <td style="border:1pt solid #000000;text-align: left;font-size: 11px;">
+                                   Base Amount
+                                </td>
+                                <td style="border:1pt solid #000000;text-align: left;font-size: 11px;">
+                                   Tax Amount
+                                </td>
+                                <td style="border:1pt solid #000000;text-align: left;font-size: 11px;">
+                                   Total Amount
+                                </td>
+                                <td style="border:1pt solid #000000;text-align: center;font-size: 11px;">
+                                   (%)
+                                </td>
+                            </tr>
+                            <tr t-foreach="report_total" t-as="i">
+                                <td style="border:1pt solid #000000;text-align: left;font-size: 11px;">
+                                    <span t-esc="i.get('desc')"/>
+                                </td>
+                                <td style="border:1pt solid #000000;text-align: left;font-size: 11px;">
+                                    <span t-esc="i.get('partner')"/>
+                                </td>
+                                <td style="border:1pt solid #000000;text-align: left;font-size: 11px;">
+                                   <span t-esc="i.get('vat_no')"/>
+                                </td>
+                                <td style="border:1pt solid #000000;text-align: left;font-size: 11px;">
+                                    <span t-esc="i.get('inv_date')"/>
+                                </td>
+                                <td style="border:1pt solid #000000;text-align: left;font-size: 11px;">
+                                    <span t-esc="i.get('inv_no')"/>
+                                </td>
+                                <td style="border:1pt solid #000000;text-align: left;font-size: 11px;">
+                                    <span t-esc="i.get('s_base_total')"/>
+                                </td>
+                                <td style="border:1pt solid #000000;text-align: left;font-size: 11px;">
+                                    <span t-esc="i.get('s_tax_total')"/>
+                                </td>
+                                <td style="border:1pt solid #000000;text-align: left;font-size: 11px;">
+                                    <span t-esc="i.get('s_total')"/>
+                                </td>
+                                <td style="border:1pt solid #000000;text-align: center;font-size: 11px;">
+                                    <span t-esc="i.get('per')"/>
+                                </td>
+                            </tr>
+
+                            <tr style="background: #ccc">
+                                <td style="border:1pt solid #000000;text-align: center;font-size: 14px;" colspan="5" cols="5">
+                                   <strong>Sales Total</strong>
+                                </td>
+                                <!-- td class="text-center">
+                                   
+                                </td>
+                                <td class="text-center">
+                                   
+                                </td>
+                                <td class="text-center">
+
+                                </td>
+                                <td class="text-center">
+                               
+                                </td -->
+                                <td class="text-center" style="border:1pt solid #000000;font-size: 14px;">
+                                    <t t-raw="'%s' %   s1  if  s1 else ''" />
+                                </td>
+                                <td class="text-center" style="border:1pt solid #000000;font-size: 14px;">
+                                    <t t-raw="'%s' %   s2  if  s2 else ''" />
+                                </td>
+                                <td class="text-center" style="border:1pt solid #000000;font-size: 14px;" colspan="2" cols="2">
+                                    <t t-raw="'%s' %   s3  if  s3 else ''" />
+                                </td>
+                            </tr>
+                    </table>
+
+                    <br></br>
+                    <strong><p style="font-size: 22;text-align: center;">Return Sales Taxes</p></strong>
+                    <table class="table table-condensed" style="border:1pt solid #000000;">
+                            <tr style="background: #ccc">
+                                <td style="border:1pt solid #000000;text-align: left;font-size: 11px;">
+                                   Description
+                                </td>
+                                <td style="border:1pt solid #000000;text-align: left;font-size: 11px;">
+                                   Customer
+                                </td>
+                                
+                                <td style="border:1pt solid #000000;text-align: left;font-size: 11px;">
+                                   VAT No.
+                                </td>
+                                <td style="border:1pt solid #000000;text-align: left;font-size: 11px;">
+                                   Invoice Date
+                                </td>
+                                <td style="border:1pt solid #000000;text-align: left;font-size: 11px;">
+                                   Invoice No.
+                                </td>
+                                <td style="border:1pt solid #000000;text-align: left;font-size: 11px;">
+                                   Base Amount
+                                </td>
+                                <td style="border:1pt solid #000000;text-align: left;font-size: 11px;">
+                                   Tax Amount
+                                </td>
+                                <td style="border:1pt solid #000000;text-align: left;font-size: 11px;">
+                                   Total Amount
+                                </td>
+                                <td style="border:1pt solid #000000;text-align: center;font-size: 11px;">
+                                   (%)
+                                </td>
+                            </tr>
+                            <tr t-foreach="report_total_2" t-as="imr">
+                                <td style="border:1pt solid #000000;text-align: left;font-size: 11px;">
+                                    <span t-esc="imr.get('desc_r')"/>
+                                </td>
+                                <td style="border:1pt solid #000000;text-align: left;font-size: 11px;">
+                                    <span t-esc="imr.get('partner_r')"/>
+                                </td>
+                                <td style="border:1pt solid #000000;text-align: left;font-size: 11px;">
+                                   <span t-esc="imr.get('vat_no_r')"/>
+                                </td>
+                                <td style="border:1pt solid #000000;text-align: left;font-size: 11px;">
+                                    <span t-esc="imr.get('inv_date_r')"/>
+                                </td>
+                                <td style="border:1pt solid #000000;text-align: left;font-size: 11px;">
+                                    <span t-esc="imr.get('inv_no_r')"/>
+                                </td>
+                                <td style="border:1pt solid #000000;text-align: left;font-size: 11px;">
+                                    <span t-esc="imr.get('s_base_total_r')"/>
+                                </td>
+                                <td style="border:1pt solid #000000;text-align: left;font-size: 11px;">
+                                    <span t-esc="imr.get('s_tax_total_r')"/>
+                                </td>
+                                <td style="border:1pt solid #000000;text-align: left;font-size: 11px;">
+                                    <span t-esc="imr.get('s_total_r')"/>
+                                </td>
+                                <td style="border:1pt solid #000000;text-align: center;font-size: 11px;">
+                                    <span t-esc="imr.get('per_r')"/>
+                                </td>
+                            </tr>
+
+                            <tr style="background: #ccc">
+                                <td style="border:1pt solid #000000;text-align: center;font-size: 14px;" colspan="5" cols="5">
+                                   <strong>Return Sales Total</strong>
+                                </td>
+                                <!-- td class="text-center">
+                                   
+                                </td>
+                                <td class="text-center">
+                                   
+                                </td>
+                                <td class="text-center">
+
+                                </td>
+                                <td class="text-center">
+                               
+                                </td -->
+                                <td class="text-center" style="border:1pt solid #000000;font-size: 14px;">
+                                    <t t-raw="'%s' %   s1_r  if  s1_r else ''" />
+                                </td>
+                                <td class="text-center" style="border:1pt solid #000000;font-size: 14px;">
+                                    <t t-raw="'%s' %   s2_r  if  s2_r else ''" />
+                                </td>
+                                <td class="text-center" style="border:1pt solid #000000;font-size: 14px;" colspan="2" cols="2">
+                                    <t t-raw="'%s' %   s3_r  if  s3_r else ''" />
+                                </td>
+                            </tr>
+                    </table>
+
+                    <br></br>
+                    <strong><p style="font-size: 22;text-align: center;">Purchase Taxes</p></strong>
+                    <table class="table table-condensed" style="border:1pt solid #000000;">
+                        <tr style="background: #ccc">
+                                <td style="border:1pt solid #000000;text-align: left;font-size: 11px;">
+                                   Description
+                                </td>
+                                <td style="border:1pt solid #000000;text-align: left;font-size: 11px;">
+                                   Customer
+                                </td>
+                                
+                                <td style="border:1pt solid #000000;text-align: left;font-size: 11px;">
+                                   VAT No.
+                                </td>
+                                <td style="border:1pt solid #000000;text-align: left;font-size: 11px;">
+                                   Invoice Date
+                                </td>
+                                <td style="border:1pt solid #000000;text-align: left;font-size: 11px;">
+                                   Invoice No.
+                                </td>
+                                <td style="border:1pt solid #000000;text-align: left;font-size: 11px;">
+                                   Base Amount
+                                </td>
+                                <td style="border:1pt solid #000000;text-align: left;font-size: 11px;">
+                                   Tax Amount
+                                </td>
+                                <td style="border:1pt solid #000000;text-align: left;font-size: 11px;">
+                                   Total Amount
+                                </td>
+                                <td style="border:1pt solid #000000;text-align: center;font-size: 11px;">
+                                   (%)
+                                </td>
+                        </tr>
+                        <tr t-foreach="report_total_1" t-as="i1">
+                                <td style="border:1pt solid #000000;text-align: left;font-size: 11px;">
+                                    <span t-esc="i1.get('desc_P')"/>
+                                </td>
+                                <td style="border:1pt solid #000000;text-align: left;font-size: 11px;">
+                                    <span t-esc="i1.get('partner_p')"/>
+                                </td>
+                                <td style="border:1pt solid #000000;text-align: left;font-size: 11px;">
+                                   <span t-esc="i1.get('vat_no_p')"/>
+                                </td>
+                                <td style="border:1pt solid #000000;text-align: left;font-size: 11px;">
+                                    <span t-esc="i1.get('inv_date_p')"/>
+                                </td>
+                                <td style="border:1pt solid #000000;text-align: left;font-size: 11px;">
+                                    <span t-esc="i1.get('inv_no_p')"/>
+                                </td>
+                                <td style="border:1pt solid #000000;text-align: left;font-size: 11px;">
+                                    <span t-esc="i1.get('P_base_total')"/>
+                                </td>
+                                <td style="border:1pt solid #000000;text-align: left;font-size: 11px;">
+                                    <span t-esc="i1.get('P_tax_total')"/>
+                                </td>
+                                <td style="border:1pt solid #000000;text-align: left;font-size: 11px;">
+                                    <span t-esc="i1.get('P_total')"/>
+                                </td>
+                                <td style="border:1pt solid #000000;text-align: center;font-size: 11px;">
+                                    <span t-esc="i1.get('per_P')"/>
+                                </td>
+                        </tr>
+
+                        <tr style="background: #ccc">
+                                <td style="border:1pt solid #000000;text-align: center;font-size: 14px;" colspan="5" cols="5">
+                                   <strong>Purchase Total</strong>
+                                </td>
+                                <!-- td class="text-center">
+                                   
+                                </td>
+                                <td class="text-center">
+                                   
+                                </td>
+                                <td class="text-center">
+
+                                </td>
+                                <td class="text-center">
+                               
+                                </td -->
+                                <td class="text-center" style="border:1pt solid #000000;font-size: 14px;">
+                                    <t t-raw="'%s' %   p1  if  p1 else ''" />
+                                </td>
+                                <td class="text-center" style="border:1pt solid #000000;font-size: 14px;">
+                                    <t t-raw="'%s' %   p2  if  p2 else ''" />
+                                </td>
+                                <td class="text-center" style="border:1pt solid #000000;font-size: 14px;" colspan="2" cols="2">
+                                    <t t-raw="'%s' %   p3  if  p3 else ''" />
+                                </td>
+                        </tr>
+
+                    </table>
+
+                    <br></br>
+                    <strong><p style="font-size: 22;text-align: center;">Return Purchase Taxes</p></strong>
+                    <table class="table table-condensed" style="border:1pt solid #000000;">
+                        <tr style="background: #ccc">
+                                <td style="border:1pt solid #000000;text-align: left;font-size: 11px;">
+                                   Description
+                                </td>
+                                <td style="border:1pt solid #000000;text-align: left;font-size: 11px;">
+                                   Customer
+                                </td>
+                                
+                                <td style="border:1pt solid #000000;text-align: left;font-size: 11px;">
+                                   VAT No.
+                                </td>
+                                <td style="border:1pt solid #000000;text-align: left;font-size: 11px;">
+                                   Invoice Date
+                                </td>
+                                <td style="border:1pt solid #000000;text-align: left;font-size: 11px;">
+                                   Invoice No.
+                                </td>
+                                <td style="border:1pt solid #000000;text-align: left;font-size: 11px;">
+                                   Base Amount
+                                </td>
+                                <td style="border:1pt solid #000000;text-align: left;font-size: 11px;">
+                                   Tax Amount
+                                </td>
+                                <td style="border:1pt solid #000000;text-align: left;font-size: 11px;">
+                                   Total Amount
+                                </td>
+                                <td style="border:1pt solid #000000;text-align: center;font-size: 11px;">
+                                   (%)
+                                </td>
+                        </tr>
+                        <tr t-foreach="report_total_4" t-as="i1p">
+                                <td style="border:1pt solid #000000;text-align: left;font-size: 11px;">
+                                    <span t-esc="i1p.get('desc_pr')"/>
+                                </td>
+                                <td style="border:1pt solid #000000;text-align: left;font-size: 11px;">
+                                    <span t-esc="i1p.get('partner_pr')"/>
+                                </td>
+                                <td style="border:1pt solid #000000;text-align: left;font-size: 11px;">
+                                   <span t-esc="i1p.get('vat_no_pr')"/>
+                                </td>
+                                <td style="border:1pt solid #000000;text-align: left;font-size: 11px;">
+                                    <span t-esc="i1p.get('inv_date_pr')"/>
+                                </td>
+                                <td style="border:1pt solid #000000;text-align: left;font-size: 11px;">
+                                    <span t-esc="i1p.get('inv_no_pr')"/>
+                                </td>
+                                <td style="border:1pt solid #000000;text-align: left;font-size: 11px;">
+                                    <span t-esc="i1p.get('p_base_total_pr')"/>
+                                </td>
+                                <td style="border:1pt solid #000000;text-align: left;font-size: 11px;">
+                                    <span t-esc="i1p.get('p_tax_total_pr')"/>
+                                </td>
+                                <td style="border:1pt solid #000000;text-align: left;font-size: 11px;">
+                                    <span t-esc="i1p.get('p_total_pr')"/>
+                                </td>
+                                <td style="border:1pt solid #000000;text-align: center;font-size: 11px;">
+                                    <span t-esc="i1p.get('per_pr')"/>
+                                </td>
+                        </tr>
+
+                        <tr style="background: #ccc">
+                                <td style="border:1pt solid #000000;text-align: center;font-size: 14px;" colspan="5" cols="5">
+                                   <strong>Return Purchase Total</strong>
+                                </td>
+                                <!-- td class="text-center">
+                                   
+                                </td>
+                                <td class="text-center">
+                                   
+                                </td>
+                                <td class="text-center">
+
+                                </td>
+                                <td class="text-center">
+                               
+                                </td -->
+                                <td class="text-center" style="border:1pt solid #000000;font-size: 14px;">
+                                    <t t-raw="'%s' %   p1_pr  if  p1_pr else ''" />
+                                </td>
+                                <td class="text-center" style="border:1pt solid #000000;font-size: 14px;">
+                                    <t t-raw="'%s' %   p2_pr  if  p2_pr else ''" />
+                                </td>
+                                <td class="text-center" style="border:1pt solid #000000;font-size: 14px;" colspan="2" cols="2">
+                                    <t t-raw="'%s' %   p3_pr  if  p3_pr else ''" />
+                                </td>
+                        </tr>
+
+                    </table>
+                </div>
+            </t>
+        </t>
+    </template>
+
+
+    
+
+
+</odoo>
