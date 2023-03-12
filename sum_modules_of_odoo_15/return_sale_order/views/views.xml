@@ -1,0 +1,47 @@
+<odoo>
+ 
+        <record id="view_sale_order_form_inherited_test" model="ir.ui.view">
+            <field name="name">view.sale.order.form.inherited.return</field>
+            <field name="model">sale.order</field>
+            <field name="inherit_id" ref="sale.view_order_form"/>
+            <field name="type">form</field>
+            <field name="priority" eval="20"/>
+            <field name="arch" type="xml">
+                <button name="action_quotation_send" position="after">
+                  <button type="object" attrs="{'invisible':[('|'), ('my_sale_return_show', '=', False),('state', '!=', 'sale')]}" name="open_sale_return" states="sale" string="Return" />
+                     <!-- <button name="%(return_sale_order.create_return_sale_wizard)d" states="sale" type="action" string="return" /> -->
+                     <field name="my_sale_return_show" invisible="1" />
+                </button>
+               
+            </field>
+        </record>
+
+        <record id="stock_picking_form_view_inherited" model="ir.ui.view">
+            <field name="name">stock.picking.form.view.inherited</field>
+            <field name="model">stock.picking</field>
+            <field name="inherit_id" ref="stock.view_picking_form"/>
+            <field name="arch" type="xml">
+            <!-- ,('credit_note_order_bol' , '=' , False)-->
+            <xpath expr="//field[@name='partner_id']" position="after">
+                    <field name="credit_note_order_bol" invisible="1"/>  
+            </xpath>
+            <xpath expr="//header" position="inside">
+                    <button name="button_validate_credit" string="Validate  and Credit Note" type="object" class="oe_highlight" 
+                        attrs="{'invisible': ['|',('state', '!=', 'assigned'),('credit_note_order_bol' , '=' , False)]}"/>
+            </xpath>
+            <!-- attrs="{'invisible': [('has_credit_note', '=', False)]}"-->
+            <xpath expr="//div[@name='button_box']" position="inside">
+                    <button name="action_see_credit_note" string="Credit Notes" type="object" class="oe_stat_button" icon="fa-pencil-square-o"   attrs="{'invisible': [('credit_note_order_bol' , '=' , False)]}"/>
+            </xpath>
+            <!-- <xpath expr="//div[@name='button_box']" position="inside">
+                <button name="action_open_picking_invoice" type="object"
+                        class="oe_stat_button" icon="fa-file-text"
+                        attrs="{'invisible': [('invoice_count','=', 0)]}">
+                    <field name="invoice_count" widget="statinfo"/>
+                </button>
+            </xpath> -->
+            </field>
+        </record>  
+         
+    
+</odoo>

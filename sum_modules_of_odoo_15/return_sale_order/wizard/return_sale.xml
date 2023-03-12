@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+   
+   
+
+    <record id="create_return_sale_wizard" model="ir.actions.act_window">
+               <field name="name">Create Return Sale</field>
+               <field name="type">ir.actions.act_window</field>
+               <field name="res_model">create.return.sale</field>
+               <field name="view_mode">form</field>
+               <field name="target">new</field>
+    </record>
+
+     <record id="setup_create_return_sale" model="ir.ui.view">
+            <field name="name">create.return.sale.setup.form</field>
+            <field name="model">create.return.sale</field>
+            <field name="arch" type="xml">
+                <form>
+                 
+                <group>
+                    <group>
+                        <field name="date_of_return" />
+                        <field name="name_so"/>
+                    </group>
+                    <group>
+                        <field name="user_id" />
+                        <field name="company_id" invisible="1" />
+                    </group>
+                </group>
+                <field name="return_line_my_id">
+                    <tree editable="bottom">
+                        <field name="return_id_inv" invisible="1" />
+                        <field name="my_product_id" options="{'no_create': True, 'no_create_edit':True}" />
+                        <field name="my_product_qty" />
+                        <field name="reason_to_return" />
+                    </tree>
+                </field>
+                 <group>
+                    <field name="note"/>
+                </group>
+                <group>
+                    <field name="my_sale_order_id" invisible="1" />
+                </group>
+                 
+                    <footer>
+                        <!-- <button string="Create" class="oe_highlight" type="object" name="validate" data-hotkey="q"/> -->
+                        <button string="Return" class="oe_highlight" type="object" name="return_wizard_so" data-hotkey="q"/>
+                         <!-- <button string="Return With CridetNote" class="oe_highlight" type="object" name="return_wizard_so_cridet" data-hotkey="q"/> -->
+                        <button string="Cancel" special="cancel" data-hotkey="z"/>
+                    </footer>
+                </form>
+            
+            </field>
+        </record>
+
+   
+    </data>
+</odoo>
+
